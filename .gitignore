@@ -2,3 +2,4 @@
 /.idea
 package-lock.json
 package.json
+captchaKeys.json

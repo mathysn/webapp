@@ -5,6 +5,8 @@ const mysql = require('mysql');
 const path = require('path');
 const bcrypt = require('bcrypt')
 
+const captchaKey = require('./captchaKeys.json');
+
 const app = express();
 const port = 3000;
 
@@ -54,7 +56,7 @@ app.post('/register', async (req, res) => {
     try {
         const response = await axios.post('https://www.google.com/recaptcha/api/siteverify', null, {
             params: {
-                secret: '6LfnUvMmAAAAADoaYe-qsDvwJtRnEcj35-d_ojo-',
+                secret: captchaKey.secret,
                 response: recaptchaResponse,
             },
         });
