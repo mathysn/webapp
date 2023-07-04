@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- SETUP -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- STYLE -->
+        <link rel="stylesheet" href="/static/style/navbar.css">
+        <link rel="stylesheet" href="/static/style/register.css">
+
+        <!-- TITLE -->
+        <title>Register</title>
+
+        <!-- JS / RECAPTCHA -->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul class="nav-list nav-list-left">
+                <li class="nav-item"><a href="/home">Home</a></li>
+                <li class="nav-item"><a href="/about">About</a></li>
+                <li class="nav-item"><a href="/contact">Contact</a></li>
+            </ul>
+            <ul class="nav-list nav-list-right">
+                <li class="nav-item"><a href="/login">Login</a></li>
+                <li class="nav-item"><a href="/register">Register</a></li>
+            </ul>
+        </nav>
+
+        <script>
+            function handleFormSubmit() {
+                document.getElementById('recaptchaResponse').value = grecaptcha.getResponse();
+                document.getElementById('register-form').submit();
+            }
+        </script>
+
+        <div class="container">
+            <h2>Register</h2>
+            <form id="register-form" action="/register" method="POST">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <div class="g-recaptcha" data-sitekey="6LfnUvMmAAAAAEvImDAGg6Kf5xmWARF9cZ0oqjZ_"></div>
+                <input type="hidden" name="recaptchaResponse" id="recaptchaResponse">
+
+                <button type="button" onclick="handleFormSubmit()">Register</button>
+            </form>
+        </div>
+    </body>
+</html>

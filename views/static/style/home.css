@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+}
+
+/* Main content styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+}
