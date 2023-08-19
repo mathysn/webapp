@@ -15,6 +15,21 @@ body {
     padding: 20px;
 }
 
+.container > h1 {
+    text-align: center;
+}
+
+.container > h3 {
+    margin-top: 150px;
+    margin-left: 100px;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.container > h3 > #logged-username {
+    color: #fa83ff;
+}
+
 /* Footer styles */
 .footer {
     background-color: #f2f2f2;

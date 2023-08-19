@@ -25,14 +25,18 @@
                 <li class="nav-item"><a href="/contact">Contact</a></li>
             </ul>
             <ul class="nav-list nav-list-right">
-                <li class="nav-item"><a href="/login">Login</a></li>
-                <li class="nav-item"><a href="/register">Register</a></li>
+                <% if(!loggedIn) { %>
+                    <li class="nav-item"><a href="/login">Login</a></li>
+                    <li class="nav-item"><a href="/register">Register</a></li>
+                <% } else { %>
+                    <li class="nav-item"><p>Logged in as <span><%= username %></span></p></li>
+                    <li class="nav-item"><a href="/logout">Logout</a></li>
+                <% } %>
             </ul>
         </nav>
 
         <div class="container">
             <h1>Welcome to sij's test app!</h1>
-            <p>Where all your dreams come true...</p>
         </div>
 
         <footer class="footer">
