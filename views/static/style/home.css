@@ -26,10 +26,6 @@ body {
     font-weight: 400;
 }
 
-.container > h3 > #logged-username {
-    color: #fa83ff;
-}
-
 /* Footer styles */
 .footer {
     background-color: #f2f2f2;

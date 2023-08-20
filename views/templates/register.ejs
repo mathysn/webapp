@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="/static/style/register.css">
 
         <!-- TITLE -->
-        <title>Register</title>
+        <title>Register - sij's test app</title>
 
         <!-- JS / RECAPTCHA -->
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -23,13 +23,13 @@
     <body>
         <nav class="navbar">
             <ul class="nav-list nav-list-left">
-                <li class="nav-item"><a href="/home">Home</a></li>
-                <li class="nav-item"><a href="/about">About</a></li>
-                <li class="nav-item"><a href="/contact">Contact</a></li>
+                <li class="nav-item"><a class="animated" href="/home">Home</a></li>
+                <li class="nav-item"><a class="animated" href="/about">About</a></li>
+                <li class="nav-item"><a class="animated" href="/contact">Contact</a></li>
             </ul>
             <ul class="nav-list nav-list-right">
-                <li class="nav-item"><a href="/login">Login</a></li>
-                <li class="nav-item"><a href="/register">Register</a></li>
+                <li class="nav-item"><a class="animated" href="/login">Login</a></li>
+                <li class="nav-item"><a class="animated" href="/register">Register</a></li>
             </ul>
         </nav>
 
@@ -56,6 +56,8 @@
                 <input type="hidden" name="recaptchaResponse" id="recaptchaResponse">
 
                 <button type="button" onclick="handleFormSubmit()">Register</button>
+
+                <a id="yes-account" href="/login">Already have an account? Login now!</a>
             </form>
         </div>
     </body>

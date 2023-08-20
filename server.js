@@ -27,7 +27,7 @@ app.set('views', path.join(__dirname, 'views/templates'));
 app.set('view engine', 'ejs');
 
 app.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
+    console.log(`[SERVER] Server is listening on port ${port}: http://localhost:3000/`);
 
 });
 
@@ -40,7 +40,7 @@ const connection = mysql2.createConnection({
 
 connection.connect((err) => {
     if (err) throw err;
-    console.log('Connected to the database');
+    console.log('[DATABASE] Connected to the database');
 
 });
 
@@ -52,8 +52,21 @@ app.get('/', (req, res) => {
 app.get('/home', async (req, res) => {
     const loggedIn = req.session.loggedIn;
     const username = req.session.username;
+    const email = req.session.email;
+    let role;
+    if(loggedIn) {
+        // Get the role of the logged in user
+        const query = `SELECT role_name FROM roles WHERE id_role = (SELECT role_id FROM users WHERE email = ?)`;
+        const [rows] = await connection.promise().query(query, [email]);
+        role = rows[0].role_name;
+    }
 
-    res.render('home', { loggedIn, username} );
+
+
+
+
+
+    res.render('home', { loggedIn, username, role} );
 
 });
 
@@ -105,7 +118,7 @@ app.post('/register', async (req, res) => {
                 console.log('[NEW USER] ', { username, email, hashedPassword });
 
             } catch(error) {
-                console.error('Error registering user: ', error);
+                console.error('Error registering user:', error);
 
             }
 
@@ -113,6 +126,7 @@ app.post('/register', async (req, res) => {
 
             req.session.loggedIn = true;
             req.session.username = username;
+            req.session.email = email;
             res.redirect('/home');
 
         } else {
@@ -120,7 +134,7 @@ app.post('/register', async (req, res) => {
 
         }
     } catch(error) {
-        console.error('reCAPTCHA verification failed: ', error);
+        console.error('reCAPTCHA verification failed:', error);
         res.status(500).send('Internal server error.');
     }
 
@@ -149,15 +163,16 @@ app.post('/login', async (req, res) => {
             return res.redirect('/login');
         }
 
-        console.log('[LOGIN] User login successful: ', user.email);
+        console.log('[LOGIN] User login successful:', user.email);
 
         // Redirect to the home page or any other desired route
         req.session.loggedIn = true;
         req.session.username = user.username;
+        req.session.email = user.email;
         res.redirect('/home');
 
     } catch (error) {
-        console.error('Error during user login: ', error);
+        console.error('Error during user login:', error);
         res.status(500).send('Internal server error.');
     }
 });
@@ -165,4 +180,10 @@ app.post('/login', async (req, res) => {
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/home');
+});
+
+app.get('/profile', (req, res) => {
+    const loggedIn = req.session.loggedIn;
+    const username = req.session.username;
+    res.render('profile', { loggedIn, username });
 });

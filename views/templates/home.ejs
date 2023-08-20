@@ -10,27 +10,31 @@
         <link rel="stylesheet" href="/static/style/home.css">
 
         <!-- TITLE -->
-        <title>sij's test app</title>
+        <title>Home - sij's test app</title>
 
         <!-- FONTS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- ICONS -->
+        <script src="https://kit.fontawesome.com/500432588b.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <nav class="navbar">
             <ul class="nav-list nav-list-left">
-                <li class="nav-item"><a href="/home">Home</a></li>
-                <li class="nav-item"><a href="/about">About</a></li>
-                <li class="nav-item"><a href="/contact">Contact</a></li>
+                <li class="nav-item"><a class="animated" href="/home">Home</a></li>
+                <li class="nav-item"><a class="animated" href="/about">About</a></li>
+                <li class="nav-item"><a class="animated" href="/contact">Contact</a></li>
             </ul>
             <ul class="nav-list nav-list-right">
                 <% if(!loggedIn) { %>
-                    <li class="nav-item"><a href="/login">Login</a></li>
-                    <li class="nav-item"><a href="/register">Register</a></li>
+                    <li class="nav-item"><a class="animated" href="/login">Login</a></li>
+                    <li class="nav-item"><a class="animated" href="/register">Register</a></li>
                 <% } else { %>
-                    <li class="nav-item"><p>Logged in as <span><%= username %></span></p></li>
-                    <li class="nav-item"><a href="/logout">Logout</a></li>
+<!--                    <li class="nav-item"><p><%= role %></p></li>-->
+                    <li class="nav-item"><a id="logged-username" href="/profile">Logged in as <span><%= username %></span></a></li>
+                    <li class="nav-item"><a class="animated" href="/logout">Logout</a></li>
                 <% } %>
             </ul>
         </nav>

@@ -16,7 +16,7 @@
     margin: 15px;
 }
 
-.nav-list li a {
+.nav-list .nav-item .animated{
     display: inline-block;
     text-decoration: none;
     font-size: 20px;
@@ -25,19 +25,28 @@
     transition: all 0.3s ease-in-out;
 }
 
-.nav-list li p {
+.nav-list .nav-item #logged-username {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 0 10px;
+    color: #333;
+}
+
+.nav-list .nav-item p {
     display: inline-block;
     font-size: 20px;
     padding: 0 10px;
     color: #333;
 }
 
-.nav-list li p span {
+.nav-list .nav-item a span {
     color: #fa83ff;
+    transition: all 0.3s ease-in-out;
 }
 
-.nav-list .nav-item:hover a{
+.nav-list .nav-item:hover .animated{
     color: #fa83ff;
     font-weight: 500;
-    transform: scale(1.15);
+    transform: scale(1.10);
 }

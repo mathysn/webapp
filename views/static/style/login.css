@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-
 }
 
 body {
@@ -51,4 +50,11 @@ button {
 
 button:hover {
     background-color: #45a049;
+}
+
+#no-account {
+    margin-top: 10px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #333;
 }
