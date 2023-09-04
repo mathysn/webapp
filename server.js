@@ -8,6 +8,7 @@ const crypto = require('crypto');
 const session = require('express-session');
 
 const captchaKey = require('./captchaKeys.json');
+const {randomInit} = require("mysql/lib/protocol/Auth");
 // const { hash } = require("bcrypt");
 
 const app = express();
@@ -178,12 +179,31 @@ app.post('/login', async (req, res) => {
 });
 
 app.get('/logout', (req, res) => {
+    console.log(`[LOGOUT] User logout successful: ${req.session.email}`);
     req.session.destroy();
     res.redirect('/home');
 });
 
-app.get('/profile', (req, res) => {
+app.get('/profile', async (req, res) => {
     const loggedIn = req.session.loggedIn;
-    const username = req.session.username;
-    res.render('profile', { loggedIn, username });
+    const email = req.session.email;
+
+    const query = `SELECT * FROM users WHERE email = ?`;
+    const [rows] = await connection.promise().query(query, [email]);
+
+    const user = rows[0];
+    const username = user.username;
+
+    let hiddenPassword = "";
+    const stringLength = Math.floor(Math.random() * (13 - 8 + 1)) + 8;
+    for(let i = 0; i < stringLength; i++) {
+        hiddenPassword += '*';
+    }
+
+    const query2 = `SELECT role_name FROM roles WHERE id_role = (SELECT role_id FROM users WHERE email = ?)`;
+    const [rows2] = await connection.promise().query(query2, [email]);
+    const role = rows2[0].role_name;
+
+
+    res.render('profile', { loggedIn, email, username, hiddenPassword, role });
 });

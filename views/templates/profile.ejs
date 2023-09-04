@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- SETUP -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <!-- SETUP -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- STYLE -->
-    <link rel="stylesheet" href="/static/style/navbar.css">
-    <link rel="stylesheet" href="/static/style/profile.css">
+        <!-- STYLE -->
+        <link rel="stylesheet" href="/static/style/navbar.css">
+        <link rel="stylesheet" href="/static/style/profile.css">
 
-    <!-- TITLE -->
-    <title>Profile - sij's test app</title>
+        <!-- TITLE -->
+        <title>Profile - sij's test app</title>
 
-    <!-- FONTS -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 
-    <!-- ICONS -->
-    <script src="https://kit.fontawesome.com/500432588b.js" crossorigin="anonymous"></script>
-</head>
-<body>
-<nav class="navbar">
-    <ul class="nav-list nav-list-left">
-        <li class="nav-item"><a class="animated" href="/home">Home</a></li>
-        <li class="nav-item"><a class="animated" href="/about">About</a></li>
-        <li class="nav-item"><a class="animated" href="/contact">Contact</a></li>
-    </ul>
-    <ul class="nav-list nav-list-right">
-        <% if(!loggedIn) { %>
-            <li class="nav-item"><a class="animated" href="/login">Login</a></li>
-            <li class="nav-item"><a class="animated" href="/register">Register</a></li>
-        <% } else { %>
-            <li class="nav-item"><a id="logged-username" href="/profile">Logged in as <span><%= username %></span></a></li>
-            <li class="nav-item"><a class="animated" href="/logout">Logout</a></li>
-        <% } %>
-    </ul>
-</nav>
+        <!-- ICONS -->
+        <script src="https://kit.fontawesome.com/500432588b.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul class="nav-list nav-list-left">
+                <li class="nav-item"><a class="animated" href="/home">Home</a></li>
+                <li class="nav-item"><a class="animated" href="/about">About</a></li>
+                <li class="nav-item"><a class="animated" href="/contact">Contact</a></li>
+            </ul>
+            <ul class="nav-list nav-list-right">
+                <% if(!loggedIn) { %>
+                    <li class="nav-item"><a class="animated" href="/login">Login</a></li>
+                    <li class="nav-item"><a class="animated" href="/register">Register</a></li>
+                <% } else { %>
+                    <% if(role === "Administrator" || role === "Moderator") { %>
+                        <li class="nav-item"><a class="dashboard-btn" href="/dashboard">Dashboard</a></li>
+                    <% } %>
+                    <li class="nav-item"><a id="logged-username" href="/profile">Logged in as <span class="animated"><%= username %></span></a></li>
+                    <li class="nav-item"><a class="animated" href="/logout">Logout</a></li>
+                <% } %>
+            </ul>
+        </nav>
 
-<div class="container">
-</div>
+        <div class="container">
+            <h2>Profile</h2>
+            <ul class="info-list">
+                <li class="info-item"><p>Username: <span><%= username %></span></p></li>
+                <li class="info-item"><p>Email: <span><%= email %></span></p></li>
+                <li class="info-item"><p>Password: <span><%= hiddenPassword %></span></p></li>
+                <li class="info-item"><p>Role: <span><%= role %></span></p></li>
+            </ul>
+        </div>
 
-</body>
+    </body>
 </html>

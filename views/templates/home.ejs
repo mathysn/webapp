@@ -32,8 +32,10 @@
                     <li class="nav-item"><a class="animated" href="/login">Login</a></li>
                     <li class="nav-item"><a class="animated" href="/register">Register</a></li>
                 <% } else { %>
-<!--                    <li class="nav-item"><p><%= role %></p></li>-->
-                    <li class="nav-item"><a id="logged-username" href="/profile">Logged in as <span><%= username %></span></a></li>
+                    <% if(role === "Administrator" || role === "Moderator") { %>
+                        <li class="nav-item"><a class="dashboard-btn" href="/dashboard">Dashboard</a></li>
+                    <% } %>
+                    <li class="nav-item"><a id="logged-username" href="/profile">Logged in as <span class="animated"><%= username %></span></a></li>
                     <li class="nav-item"><a class="animated" href="/logout">Logout</a></li>
                 <% } %>
             </ul>

@@ -1,9 +1,13 @@
+:root {
+    --color-contrast: #fa83ff;
+    --color-text: #333;
+}
+
 /* Navbar styles */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     background-color: white;
     box-shadow: #6b6b6b 1px 1px 3px;
     height: 75px;
@@ -16,37 +20,45 @@
     margin: 15px;
 }
 
-.nav-list .nav-item .animated{
+.nav-item {
+    padding: 0 10px;
+}
+
+.animated {
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 0;
+    color: var(--color-text);
+}
+
+#logged-username > .animated {
+    color: var(--color-contrast);
+}
+
+.animated::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -2.5px;
+    left: 0;
+    background-color: var(--color-contrast);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+#logged-username {
     display: inline-block;
     text-decoration: none;
     font-size: 20px;
-    padding: 0 10px;
-    color: #333;
-    transition: all 0.3s ease-in-out;
+    padding: 0;
+    color: var(--color-text);
 }
 
-.nav-list .nav-item #logged-username {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 20px;
-    padding: 0 10px;
-    color: #333;
-}
-
-.nav-list .nav-item p {
-    display: inline-block;
-    font-size: 20px;
-    padding: 0 10px;
-    color: #333;
-}
-
-.nav-list .nav-item a span {
-    color: #fa83ff;
-    transition: all 0.3s ease-in-out;
-}
-
-.nav-list .nav-item:hover .animated{
-    color: #fa83ff;
-    font-weight: 500;
-    transform: scale(1.10);
+.animated:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
