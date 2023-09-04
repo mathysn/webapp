@@ -1,6 +1,8 @@
 :root {
-    --color-contrast: #fa83ff;
-    --color-text: #333;
+    --color-contrast: #80b7ff; /*fa83ff*/
+    --color-text-dark: #333;
+    --color-text-light: #fff;
+
 }
 
 /* Navbar styles */
@@ -30,7 +32,7 @@
     text-decoration: none;
     font-size: 20px;
     padding: 0;
-    color: var(--color-text);
+    color: var(--color-text-dark);
 }
 
 #logged-username > .animated {
@@ -55,10 +57,25 @@
     text-decoration: none;
     font-size: 20px;
     padding: 0;
-    color: var(--color-text);
+    color: var(--color-text-dark);
 }
 
 .animated:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+
+.dashboard-btn {
+    min-width: 130px;
+    padding: 10px 10px;
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--color-text-light);
+    border-radius: 7px;
+    background-color: #b95e5e;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-btn:hover {
+    background-color: #a95454;
 }
