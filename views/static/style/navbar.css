@@ -3,16 +3,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: white;
-    box-shadow: #6b6b6b 1px 1px 3px;
-    height: 75px;
+    background-color: var(--color-background); /* TODO: need to make the navbar transparent for the other pages cuz that shit is ugly rn */
+    /*box-shadow: #6b6b6b 1px 1px 3px;*/
+    height: 85px;
     z-index: 999;
 }
 
 .nav-list {
     display: flex;
     list-style-type: none;
-    margin: 15px;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 50px;
 }
 
 .nav-item {
@@ -25,7 +28,7 @@
     text-decoration: none;
     font-size: 20px;
     padding: 0;
-    color: var(--color-text-dark);
+    color: var(--color-nav-text);
 }
 
 .animated::after {
@@ -51,7 +54,7 @@
     text-decoration: none;
     font-size: 20px;
     padding: 0;
-    color: var(--color-text-dark);
+    color: var(--color-nav-text);
 }
 
 #logged-username > .animated {
@@ -75,10 +78,10 @@
 
 /* Footer styles */
 .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #f2f2f2;
     padding: 10px;
-    text-align: center;
-    bottom: 0;
-    position: fixed;
-    width: 100vw;
+    height: 30px;
 }

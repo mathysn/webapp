@@ -1,7 +1,9 @@
 :root {
+    --color-background: #2B4162;
+    --color-nav-text: #fff8ee;
     --color-text-dark: #333;
-    --color-text-light: #fff;
-    --color-contrast: #80b7ff;
+    --color-text-light: #fff8ee;
+    --color-contrast: #D5573B;
     --color-btn-submit: #4caf50;
     --color-btn-submit-hover: #45a049;
 }

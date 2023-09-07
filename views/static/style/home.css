@@ -6,15 +6,36 @@
 
 body {
     font-family: Montserrat, sans-serif;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 /* Main content styles */
-.container {
-    max-width: 90vw;
+.head-container {
     margin: 0 auto;
-    padding: 20px;
+    height: calc(100vh - 85px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-background);
 }
 
-.container > h1 {
-    text-align: center;
+.introduction {
+    max-width: fit-content;
+    color: var(--color-text-light);
 }
+
+.title, .subtitle {
+    max-width: fit-content;
+    margin: auto;
+}
+
+.subtitle {
+    margin-left: 130px;
+}
+
