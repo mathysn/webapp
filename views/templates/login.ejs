@@ -17,13 +17,18 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- ICONS -->
+        <script src="https://kit.fontawesome.com/500432588b.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <nav class="navbar">
             <ul class="nav-list nav-list-left">
                 <li class="nav-item"><a class="animated" href="/home">Home</a></li>
                 <li class="nav-item"><a class="animated" href="/about">About</a></li>
-                <li class="nav-item"><a class="animated" href="/contact">Contact</a></li>
+                <li class="nav-item"><a class="animated" href="/cv">CV</a></li>
+                <li class="nav-item"><a class="animated" href="/portfolio">Portfolio</a></li>
+                <li class="nav-item"><a class="animated-icon" href="https://github.com/mathysn" target="_blank"><i class="fa-brands fa-github"></i></a></li>
             </ul>
             <ul class="nav-list nav-list-right">
                 <li class="nav-item"><a class="animated" href="/login">Login</a></li>
@@ -32,19 +37,22 @@
         </nav>
 
         <div class="container">
-            <h2>Login</h2>
-            <form action="/login" method="POST">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+            <div class="login-form">
+                <h2>Login</h2>
+                <form action="/login" method="POST">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
 
-                <button type="submit">Login</button>
+                    <button type="submit">Login</button>
 
-                <a id="no-account" href="/register">Don't have an account? Register now!</a>
-            </form>
+                    <a id="no-account" href="/register">Don't have an account? Register now!</a>
+                </form>
+            </div>
         </div>
+
 
         <footer class="footer">
             <p>&copy; 2023 sij's test app. All rights reserved.</p>

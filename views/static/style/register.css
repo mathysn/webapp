@@ -8,8 +8,17 @@ body {
 }
 
 .container {
+    margin: 0 auto;
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-background);
+}
+
+.register-form {
     max-width: 400px;
-    margin: 5% auto 0 auto;
     padding: 20px;
     background-color: white;
     border-radius: 5px;

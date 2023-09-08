@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="/static/style/navbar.css">
         <link rel="stylesheet" href="/static/style/home.css">
         <link rel="stylesheet" href="/static/style/root.css">
+        <link rel="stylesheet" href="/static/style/stars.css">
 
         <!-- TITLE -->
         <title>Home - Mathys NOURRY</title>
@@ -22,11 +23,16 @@
         <script src="https://kit.fontawesome.com/500432588b.js" crossorigin="anonymous"></script>
     </head>
     <body>
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
         <nav class="navbar">
             <ul class="nav-list nav-list-left">
                 <li class="nav-item"><a class="animated" href="/home">Home</a></li>
                 <li class="nav-item"><a class="animated" href="/about">About</a></li>
-                <li class="nav-item"><a class="animated" href="/contact">Contact</a></li>
+                <li class="nav-item"><a class="animated" href="/cv">CV</a></li>
+                <li class="nav-item"><a class="animated" href="/portfolio">Portfolio</a></li>
+                <li class="nav-item"><a class="animated-icon" href="https://github.com/mathysn" target="_blank"><i class="fa-brands fa-github"></i></a></li>
             </ul>
             <ul class="nav-list nav-list-right">
                 <% if(!loggedIn) { %>
@@ -47,9 +53,7 @@
                 <h1 class="title">Mathys NOURRY</h1>
                 <h2 class="subtitle">Computer Science student</h2>
             </div>
-
         </div>
-
 
         <footer class="footer">
             <p>&copy; 2023 sij's test app. All rights reserved.</p>

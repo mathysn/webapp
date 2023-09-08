@@ -1,25 +1,35 @@
 /* Navbar styles */
 .navbar {
+    position: absolute;
+    width: 100%;
+    height: 85px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--color-background); /* TODO: need to make the navbar transparent for the other pages cuz that shit is ugly rn */
-    /*box-shadow: #6b6b6b 1px 1px 3px;*/
-    height: 85px;
     z-index: 999;
+
 }
 
 .nav-list {
     display: flex;
+    align-items: center;
     list-style-type: none;
     margin: 10px;
     background-color: rgba(255, 255, 255, 0.2);
-    padding: 20px;
+    /*padding: 20px;*/
     border-radius: 50px;
 }
 
+.nav-list-left {
+    padding: 15px;
+}
+
+.nav-list-right {
+    padding: 21.5px;
+}
+
 .nav-item {
-    padding: 0 10px;
+    margin: 0 10px;
 }
 
 .animated {
@@ -47,6 +57,18 @@
 .animated:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+
+.animated-icon {
+    font-size: 30px;
+    padding: 0;
+    margin: 0;
+    color: var(--color-text-light);
+    transition: color 0.4s ease;
+}
+
+.animated-icon:hover {
+    color: var(--color-contrast);
 }
 
 #logged-username {

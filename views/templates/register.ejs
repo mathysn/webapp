@@ -20,13 +20,18 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- ICONS -->
+        <script src="https://kit.fontawesome.com/500432588b.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <nav class="navbar">
             <ul class="nav-list nav-list-left">
                 <li class="nav-item"><a class="animated" href="/home">Home</a></li>
                 <li class="nav-item"><a class="animated" href="/about">About</a></li>
-                <li class="nav-item"><a class="animated" href="/contact">Contact</a></li>
+                <li class="nav-item"><a class="animated" href="/cv">CV</a></li>
+                <li class="nav-item"><a class="animated" href="/portfolio">Portfolio</a></li>
+                <li class="nav-item"><a class="animated-icon" href="https://github.com/mathysn" target="_blank"><i class="fa-brands fa-github"></i></a></li>
             </ul>
             <ul class="nav-list nav-list-right">
                 <li class="nav-item"><a class="animated" href="/login">Login</a></li>
@@ -42,24 +47,26 @@
         </script>
 
         <div class="container">
-            <h2>Register</h2>
-            <form id="register-form" action="/register" method="POST">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+            <div class="register-form">
+                <h2>Register</h2>
+                <form id="register-form" action="/register" method="POST">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
 
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
 
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
 
-                <div class="g-recaptcha" data-sitekey="6LfnUvMmAAAAAEvImDAGg6Kf5xmWARF9cZ0oqjZ_"></div>
-                <input type="hidden" name="recaptchaResponse" id="recaptchaResponse">
+                    <div class="g-recaptcha" data-sitekey="6LfnUvMmAAAAAEvImDAGg6Kf5xmWARF9cZ0oqjZ_"></div>
+                    <input type="hidden" name="recaptchaResponse" id="recaptchaResponse">
 
-                <button type="button" onclick="handleFormSubmit()">Register</button>
+                    <button type="button" onclick="handleFormSubmit()">Register</button>
 
-                <a id="yes-account" href="/login">Already have an account? Login now!</a>
-            </form>
+                    <a id="yes-account" href="/login">Already have an account? Login now!</a>
+                </form>
+            </div>
         </div>
 
         <footer class="footer">
