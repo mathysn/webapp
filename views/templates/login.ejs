@@ -31,18 +31,27 @@
                 <li class="nav-item"><a class="animated-icon" href="https://github.com/mathysn" target="_blank"><i class="fa-brands fa-github"></i></a></li>
             </ul>
             <ul class="nav-list nav-list-right">
-                <li class="nav-item"><a class="animated" href="/login">Login</a></li>
+                <li class="nav-item"><a class="animated active" href="/login">Login</a></li>
                 <li class="nav-item"><a class="animated" href="/register">Register</a></li>
             </ul>
         </nav>
 
         <div class="container">
+
             <div class="login-form">
                 <h2>Login</h2>
                 <form action="/login" method="POST">
+                    <% if(errMsg !== null) { %>
+                        <div class="error-message">
+                            <p><%- errMsg %></p>
+                        </div>
+                    <% } %>
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
-
+                    <% if (email === null) { %>
+                        <input type="email" id="email" name="email" required>
+                    <% } else { %>
+                        <input type="email" id="email" name="email" value="<%= email %>" required>
+                    <% } %>
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
 

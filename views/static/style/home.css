@@ -17,12 +17,12 @@ body::-webkit-scrollbar {
 /* Main content styles */
 .head-container {
     margin: 0 auto;
-    height: 100vh;
+    height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);*/
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 }
 
 .container {

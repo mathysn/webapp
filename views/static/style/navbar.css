@@ -98,6 +98,10 @@
     background-color: #a95454;
 }
 
+.active {
+    color: var(--color-contrast);
+}
+
 /* Footer styles */
 .footer {
     display: flex;

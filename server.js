@@ -12,7 +12,7 @@ const {randomInit} = require("mysql/lib/protocol/Auth");
 // const { hash } = require("bcrypt");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const sessionSecretKey = crypto.randomBytes(32).toString('hex');
 
@@ -28,7 +28,7 @@ app.set('views', path.join(__dirname, 'views/templates'));
 app.set('view engine', 'ejs');
 
 app.listen(port, () => {
-    console.log(`[SERVER] Server is listening on port ${port}: http://localhost:3000/`);
+    console.log(`[SERVER] Server is listening on port ${port}: http://localhost:${port}/`);
 
 });
 
@@ -62,11 +62,6 @@ app.get('/home', async (req, res) => {
         role = rows[0].role_name;
     }
 
-
-
-
-
-
     res.render('home', { loggedIn, username, role} );
 
 });
@@ -77,7 +72,9 @@ app.get('/register', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.render('login');
+    const email = null;
+    const errMsg = null;
+    res.render('login', { email, errMsg });
 
 });
 
@@ -143,6 +140,7 @@ app.post('/register', async (req, res) => {
 
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
+    let errMsg = null;
 
     try {
         // Check if the email exists in the database
@@ -150,8 +148,11 @@ app.post('/login', async (req, res) => {
         const [rows] = await connection.promise().query(query, [email]);
 
         if (rows.length === 0) {
-            console.log('Email does not exist. User login failed.');
-            return res.redirect('/login');
+            // console.log('[LOGIN ERROR] Email does not exist. User login failed.');
+
+            let email = null;
+            errMsg = "This email address isn't linked to any account.<br><a id='error-msg-link' href='/register'>Please register now!</a>"
+            return res.render('login', { email, errMsg });
         }
 
         const user = rows[0];
@@ -160,8 +161,10 @@ app.post('/login', async (req, res) => {
         const passwordMatch = bcrypt.compareSync(password, user.password);
 
         if (!passwordMatch) {
-            console.log('Incorrect password. User login failed.');
-            return res.redirect('/login');
+            // console.log('[LOGIN ERROR] Incorrect password. User login failed.');
+
+            errMsg = "The password you entered is incorrect.<br>Please try again."
+            return res.render('login', { email, errMsg });
         }
 
         console.log('[LOGIN] User login successful:', user.email);

@@ -7,6 +7,18 @@ body {
     font-family: Montserrat, sans-serif;
 }
 
+.error-message {
+    padding: 15px;
+    border-radius: 5px;
+    color: var(--color-text-light);
+    background-color: var(--color-alert-error);
+    margin-bottom: 10px;
+}
+
+#error-msg-link {
+    color: var(--color-text-light);
+}
+
 .container {
     margin: 0 auto;
     height: calc(100vh - 50px);
@@ -18,11 +30,11 @@ body {
 }
 
 .login-form {
-    max-width: 400px;
+    width: 400px;
     padding: 20px;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
 h2 {
