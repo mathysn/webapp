@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 const crypto = require('crypto');
 
 const session = require('express-session');
-const connection = require('./connection');
+const connection = require('./connection.js');
 
 const captchaKey = require('./captchaKeys.json');
 // const {randomInit} = require("mysql/lib/protocol/Auth");
