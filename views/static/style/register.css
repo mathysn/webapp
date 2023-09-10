@@ -7,6 +7,18 @@ body {
     font-family: Montserrat, sans-serif;
 }
 
+.error-message {
+    padding: 15px;
+    border-radius: 5px;
+    color: var(--color-text-light);
+    background-color: var(--color-alert-error);
+    margin-bottom: 10px;
+}
+
+#error-msg-link {
+    color: var(--color-text-light);
+}
+
 .container {
     margin: 0 auto;
     height: calc(100vh - 50px);

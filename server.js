@@ -5,10 +5,12 @@ const mysql2 = require('mysql2');
 const path = require('path');
 const bcrypt = require('bcrypt')
 const crypto = require('crypto');
+
 const session = require('express-session');
+const connection = require('./connection');
 
 const captchaKey = require('./captchaKeys.json');
-const {randomInit} = require("mysql/lib/protocol/Auth");
+// const {randomInit} = require("mysql/lib/protocol/Auth");
 // const { hash } = require("bcrypt");
 
 const app = express();
@@ -30,13 +32,6 @@ app.set('view engine', 'ejs');
 app.listen(port, () => {
     console.log(`[SERVER] Server is listening on port ${port}: http://localhost:${port}/`);
 
-});
-
-const connection = mysql2.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'webappdb'
 });
 
 connection.connect((err) => {
@@ -67,7 +62,10 @@ app.get('/home', async (req, res) => {
 });
 
 app.get('/register', (req, res) => {
-    res.render('register');
+    const email = null;
+    const username = null;
+    const errMsg = null;
+    res.render('register', { email, username, errMsg });
 
 });
 
@@ -88,6 +86,27 @@ app.post('/register', async (req, res) => {
         return rows[0].count > 0;
     }
 
+    let errMsg = null;
+
+    // Check if the entered email is already used
+    const emailUsed = await isEmailUsed(email);
+    if(emailUsed) {
+        errMsg = "Email is already linked to an account.<br><a id='error-msg-link' href='/login'>Please login now!</a>";
+        return res.render('register', { email, username, errMsg });
+    }
+
+    // Check if the username is shorter than 3 characters
+    if(username.length < 3) {
+        errMsg = "Username must be 3 characters or longer.";
+        return res.render('register', { email, username, errMsg });
+    }
+
+    // Check if the password doesn't meet the requirements (1 cap letter, 1 number, 1 spec character)
+    if(!/[A-Z]/.test(password) || !/[0-9]/.test(password) || !/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) || password.length < 8) {
+        errMsg = "Password must contain at least 1 capital letter, 1 number and 1 special character.";
+        return res.render('register', { email, username, errMsg });
+    }
+
     try {
         const response = await axios.post('https://www.google.com/recaptcha/api/siteverify', null, {
             params: {
@@ -98,29 +117,23 @@ app.post('/register', async (req, res) => {
 
         const { success } = response.data;
 
+        // Check if the Captcha was completed (code above)
         if(success) {
             // Encrypt the password for extra security
             const salt = bcrypt.genSaltSync(10);
             const hashedPassword = bcrypt.hashSync(password, salt);
 
             try {
-                const emailUsed = await isEmailUsed(email);
-                if(emailUsed) {
-                    console.log('Email is already used. User registration failed.');
-                    return res.redirect('register');
-                }
-
                 const query = `INSERT INTO users (username, email, password) VALUES (?, ?, ?)`;
                 await connection.promise().query(query, [username, email, hashedPassword]);
 
-                console.log('[NEW USER] ', { username, email, hashedPassword });
+                console.log('[NEW USER]', { username, email, hashedPassword });
 
             } catch(error) {
                 console.error('Error registering user:', error);
-
             }
 
-            console.log('\nreCAPTCHA verification success');
+            console.log('reCAPTCHA verification success');
 
             req.session.loggedIn = true;
             req.session.username = username;
@@ -128,7 +141,8 @@ app.post('/register', async (req, res) => {
             res.redirect('/home');
 
         } else {
-            res.send('reCAPTCHA verification failed')
+            errMsg = "Please verify yourself with the Captcha.";
+            res.render('register', { email, username, errMsg });
 
         }
     } catch(error) {
@@ -148,9 +162,7 @@ app.post('/login', async (req, res) => {
         const [rows] = await connection.promise().query(query, [email]);
 
         if (rows.length === 0) {
-            // console.log('[LOGIN ERROR] Email does not exist. User login failed.');
-
-            let email = null;
+            const email = null;
             errMsg = "This email address isn't linked to any account.<br><a id='error-msg-link' href='/register'>Please register now!</a>"
             return res.render('login', { email, errMsg });
         }
@@ -159,17 +171,13 @@ app.post('/login', async (req, res) => {
 
         // Compare the entered password with the stored hashed password
         const passwordMatch = bcrypt.compareSync(password, user.password);
-
         if (!passwordMatch) {
-            // console.log('[LOGIN ERROR] Incorrect password. User login failed.');
-
             errMsg = "The password you entered is incorrect.<br>Please try again."
             return res.render('login', { email, errMsg });
         }
 
         console.log('[LOGIN] User login successful:', user.email);
 
-        // Redirect to the home page or any other desired route
         req.session.loggedIn = true;
         req.session.username = user.username;
         req.session.email = user.email;
@@ -189,6 +197,12 @@ app.get('/logout', (req, res) => {
 
 app.get('/profile', async (req, res) => {
     const loggedIn = req.session.loggedIn;
+
+    // Check if the user is logged in (prevents people to access the page using the url)
+    if(loggedIn === undefined) {
+        return res.redirect('home');
+    }
+
     const email = req.session.email;
 
     const query = `SELECT * FROM users WHERE email = ?`;
@@ -216,11 +230,22 @@ app.get('/dashboard', async (req, res) => {
     const username = req.session.username;
     const email = req.session.email;
     let role;
+
+    // Check if the user is logged in (prevents people to access the page using the url)
+    if(loggedIn === undefined) {
+        return res.redirect('home');
+    }
+
     if(loggedIn) {
         // Get the role of the logged in user
         const query = `SELECT role_name FROM roles WHERE id_role = (SELECT role_id FROM users WHERE email = ?)`;
         const [rows] = await connection.promise().query(query, [email]);
         role = rows[0].role_name;
+
+        // Check if the user has the permission to see this page (prevents people to access the page using the url)
+        if(role === "User") {
+            return res.redirect('home');
+        }
     }
 
     res.render('dashboard', { loggedIn, username, role});
