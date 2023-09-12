@@ -22,34 +22,38 @@
         <script src="https://kit.fontawesome.com/500432588b.js" crossorigin="anonymous"></script>
     </head>
     <body>
-        <nav class="navbar">
-            <ul class="nav-list nav-list-left">
-                <li class="nav-item"><a class="animated" href="/home">Home</a></li>
-                <li class="nav-item"><a class="animated" href="/about">About</a></li>
-                <li class="nav-item"><a class="animated" href="/contact">Contact</a></li>
-            </ul>
-            <ul class="nav-list nav-list-right">
-                <% if(!loggedIn) { %>
-                    <li class="nav-item"><a class="animated" href="/login">Login</a></li>
-                    <li class="nav-item"><a class="animated" href="/register">Register</a></li>
-                <% } else { %>
-                    <% if(role === "Administrator" || role === "Moderator") { %>
-                        <li class="nav-item"><a class="dashboard-btn" href="/dashboard">Dashboard</a></li>
-                    <% } %>
-                    <li class="nav-item"><a id="logged-username" href="/profile">Logged in as <span class="animated"><%= username %></span></a></li>
-                    <li class="nav-item"><a class="animated" href="/logout">Logout</a></li>
+    <nav class="navbar">
+        <ul class="nav-list nav-list-left">
+            <li class="nav-item"><a class="animated active" href="/home">Home</a></li>
+            <li class="nav-item"><a class="animated" href="/about">About</a></li>
+            <li class="nav-item"><a class="animated" href="/cv">CV</a></li>
+            <li class="nav-item"><a class="animated" href="/portfolio">Portfolio</a></li>
+            <li class="nav-item"><a class="animated-icon" href="https://github.com/mathysn" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+        </ul>
+        <ul class="nav-list nav-list-right">
+            <% if(!loggedIn) { %>
+                <li class="nav-item"><a class="animated" href="/login">Login</a></li>
+                <li class="nav-item"><a class="animated" href="/register">Register</a></li>
+            <% } else { %>
+                <% if(role === "Administrator" || role === "Moderator") { %>
+                    <li class="nav-item"><a class="dashboard-btn" href="/dashboard">Dashboard</a></li>
                 <% } %>
-            </ul>
-        </nav>
+                <li class="nav-item"><a id="logged-username" href="/profile">Logged in as <span class="animated"><%= username %></span></a></li>
+                <li class="nav-item"><a class="animated" href="/logout">Logout</a></li>
+            <% } %>
+        </ul>
+    </nav>
 
         <div class="container">
-            <h2>Profile</h2>
-            <ul class="info-list">
-                <li class="info-item"><p>Username: <span><%= username %></span></p></li>
-                <li class="info-item"><p>Email: <span><%= email %></span></p></li>
-                <li class="info-item"><p>Password: <span><%= hiddenPassword %></span></p></li>
-                <li class="info-item"><p>Role: <span><%= role %></span></p></li>
-            </ul>
+            <div class="profile-container">
+                <h2>Profile</h2>
+                <ul class="info-list">
+                    <li class="info-item"><p>Username: <span><%= username %></span></p></li>
+                    <li class="info-item"><p>Email: <span><%= email %></span></p></li>
+                    <li class="info-item"><p>Password: <span><%= hiddenPassword %></span></p></li>
+                    <li class="info-item"><p>Role: <span><%= role %></span></p></li>
+                </ul>
+            </div>
         </div>
 
         <footer class="footer">

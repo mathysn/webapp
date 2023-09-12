@@ -60,6 +60,10 @@ input[type="password"] {
     border-radius: 4px;
 }
 
+.show-password {
+    margin-bottom: 10px;
+}
+
 button {
     padding: 10px 20px;
     background-color: var(--color-btn-submit);

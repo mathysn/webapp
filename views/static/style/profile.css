@@ -9,12 +9,22 @@ body {
 }
 
 .container {
-    max-width: 400px;
+    margin: 0 auto;
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-background);
+}
+
+.profile-container {
+    width: 400px;
     margin: 250px auto;
     padding: 20px;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
 h2 {
