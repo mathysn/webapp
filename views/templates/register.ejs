@@ -10,6 +10,9 @@
         <link rel="stylesheet" href="/static/style/register.css">
         <link rel="stylesheet" href="/static/style/root.css">
 
+        <!-- JAVASCRIPT -->
+        <script src="/static/js/showPassword.js"></script>
+
         <!-- TITLE -->
         <title>Register - Mathys NOURRY</title>
 
@@ -54,6 +57,7 @@
                             <p><%- errMsg %></p>
                         </div>
                     <% } %>
+
                     <label for="email">Email:</label>
                     <% if (email === null) { %>
                         <input type="email" id="email" name="email" required>
@@ -70,6 +74,11 @@
 
                     <label for="password">Password:</label>
                     <input type="password" id="password" name="password" required>
+
+                    <p class="show-password">
+                        <input type="checkbox" id="show-password" onclick="toggleShowPassword()">
+                        <label for="show-password">Show Password</label>
+                    </p>
 
                     <div class="g-recaptcha" data-sitekey="6LfnUvMmAAAAAEvImDAGg6Kf5xmWARF9cZ0oqjZ_"></div>
                     <input type="hidden" name="recaptchaResponse" id="recaptchaResponse">

@@ -103,7 +103,21 @@ app.post('/register', async (req, res) => {
 
     // Check if the password doesn't meet the requirements (1 cap letter, 1 number, 1 spec character)
     if(!/[A-Z]/.test(password) || !/[0-9]/.test(password) || !/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) || password.length < 8) {
-        errMsg = "Password must contain at least 1 capital letter, 1 number and 1 special character.";
+        errMsg = "The password you entered is missing the following: <ul class='error-message-list'>"
+        if(password.length < 8) {
+            errMsg += "<li>8 characters or more</li>";
+        }
+        if(!/[A-Z]/.test(password)) {
+            errMsg += "<li>1 capital letter</li>";
+        }
+        if(!/[0-9]/.test(password)) {
+            errMsg += "<li>1 number</li>";
+        }
+        if(!/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)) {
+            errMsg += "<li>1 special character</li>";
+        }
+        errMsg += "</ul>";
+        // errMsg = "Password must contain at least 1 capital letter, 1 number, 1 special character and needs to be 8 characters or longer.";
         return res.render('register', { email, username, errMsg });
     }
 

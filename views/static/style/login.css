@@ -49,6 +49,12 @@ form {
 
 label {
     margin-bottom: 5px;
+
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 input[type="email"],
@@ -61,6 +67,7 @@ input[type="password"] {
 }
 
 .show-password {
+    margin-top: -5px;
     margin-bottom: 10px;
 }
 
@@ -78,6 +85,7 @@ button:hover {
 }
 
 #no-account {
+    width: fit-content;
     margin-top: 10px;
     font-size: 14px;
     text-decoration: none;

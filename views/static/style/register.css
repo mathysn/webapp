@@ -19,6 +19,10 @@ body {
     color: var(--color-text-light);
 }
 
+.error-message-list {
+    margin-left: 30px;
+}
+
 .container {
     margin: 0 auto;
     height: calc(100vh - 50px);
@@ -49,6 +53,12 @@ form {
 
 label {
     margin-bottom: 5px;
+
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 input[type="email"],
@@ -58,6 +68,11 @@ input[type="password"] {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+}
+
+.show-password {
+    margin-top: -5px;
+    margin-bottom: 10px;
 }
 
 button {
@@ -79,6 +94,7 @@ button:hover {
 }
 
 #yes-account {
+    width: fit-content;
     margin-top: 10px;
     font-size: 14px;
     text-decoration: none;
