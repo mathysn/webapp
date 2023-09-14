@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- SETUP -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- STYLE -->
+        <link rel="stylesheet" href="/static/style/navbar.css">
+        <link rel="stylesheet" href="/static/style/cv.css">
+        <link rel="stylesheet" href="/static/style/root.css">
+
+        <!-- TITLE -->
+        <title>CV - Mathys NOURRY</title>
+
+        <!-- FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+        <!-- ICONS -->
+        <script src="https://kit.fontawesome.com/500432588b.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul class="nav-list nav-list-left">
+                <li class="nav-item"><a class="animated" href="/home">Home</a></li>
+                <li class="nav-item"><a class="animated" href="/about">About</a></li>
+                <li class="nav-item"><a class="animated active" href="/cv">CV</a></li>
+                <li class="nav-item"><a class="animated" href="/portfolio">Portfolio</a></li>
+                <li class="nav-item"><a class="animated-icon" href="https://github.com/mathysn" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+            </ul>
+            <ul class="nav-list nav-list-right">
+                <% if(!loggedIn) { %>
+                    <li class="nav-item"><a class="animated" href="/login">Login</a></li>
+                    <li class="nav-item"><a class="animated" href="/register">Register</a></li>
+                <% } else { %>
+                    <% if(role === "Administrator" || role === "Moderator") { %>
+                        <li class="nav-item"><a class="dashboard-btn" href="/dashboard">Dashboard</a></li>
+                    <% } %>
+                    <li class="nav-item"><a id="logged-username" href="/profile">Logged in as <span class="animated"><%= username %></span></a></li>
+                    <li class="nav-item"><a class="animated" href="/logout">Logout</a></li>
+                <% } %>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <iframe class="pdf-viewer" src="https://drive.google.com/file/d/1RfhB1_SG-SJqyYmcJvpZl106udeb4GZX/preview" height="100%" width="45%"></iframe>
+            <!-- TODO: edit this to make it so there is no pdf viewer visible but the page remains scrollable and the text selectable -->
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2023 sij's test app. All rights reserved.</p>
+        </footer>
+    </body>
+</html>

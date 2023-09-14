@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    font-family: Montserrat, sans-serif;
+}
+
+.container {
+    margin: 0 auto;
+    height: calc(100vh - 50px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--color-background);
+}
+
+.pdf-viewer {
+    margin-top: 85px;
+    margin-bottom: 10px;
+    border: none;
+}

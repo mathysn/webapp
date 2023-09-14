@@ -117,7 +117,6 @@ app.post('/register', async (req, res) => {
             errMsg += "<li>1 special character</li>";
         }
         errMsg += "</ul>";
-        // errMsg = "Password must contain at least 1 capital letter, 1 number, 1 special character and needs to be 8 characters or longer.";
         return res.render('register', { email, username, errMsg });
     }
 
@@ -214,7 +213,7 @@ app.get('/profile', async (req, res) => {
 
     // Check if the user is logged in (prevents people to access the page using the url)
     if(loggedIn === undefined) {
-        return res.redirect('home');
+        return res.redirect('/home');
     }
 
     const email = req.session.email;
@@ -263,4 +262,19 @@ app.get('/dashboard', async (req, res) => {
     }
 
     res.render('dashboard', { loggedIn, username, role});
+});
+
+app.get('/cv', async (req, res) => {
+    const loggedIn = req.session.loggedIn;
+    const username = req.session.username;
+    const email = req.session.email;
+    let role;
+
+    if(loggedIn) {
+        const query = `SELECT role_name FROM roles WHERE id_role = (SELECT role_id FROM users WHERE email = ?)`;
+        const [rows] = await connection.promise().query(query, [email]);
+        role = rows[0].role_name;
+    }
+
+    res.render('cv', { loggedIn, username, role });
 });
