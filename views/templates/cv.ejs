@@ -45,8 +45,10 @@
         </nav>
 
         <div class="container">
-            <iframe class="pdf-viewer" src="https://drive.google.com/file/d/1RfhB1_SG-SJqyYmcJvpZl106udeb4GZX/preview" height="100%" width="45%"></iframe>
-            <!-- TODO: edit this to make it so there is no pdf viewer visible but the page remains scrollable and the text selectable -->
+            <div class="pdf-viewer">
+                <a id="dl-pdf" href="/static/assets/CV_Mathys_NOURRY.pdf" download target="_blank"><i id="pdf-icon" class="fa-regular fa-file-pdf"></i> Download PDF</a>
+                <iframe class="pdf" src="https://drive.google.com/file/d/1RfhB1_SG-SJqyYmcJvpZl106udeb4GZX/preview"></iframe>
+            </div>
         </div>
 
         <footer class="footer">

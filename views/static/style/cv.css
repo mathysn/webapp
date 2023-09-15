@@ -10,7 +10,7 @@ body {
 
 .container {
     margin: 0 auto;
-    height: calc(100vh - 50px);
+    min-height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +18,34 @@ body {
 }
 
 .pdf-viewer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    width: 100%;
     margin-top: 85px;
     margin-bottom: 10px;
+}
+
+.pdf {
+    height: 1000px;
+    width: 45%;
     border: none;
+}
+
+#dl-pdf {
+    width: fit-content;
+    margin: 15px 0;
+    color: var(--color-text-light);
+    font-size: 20px;
+    text-decoration: none;
+    padding: 15px;
+    border-radius: 50px;
+    background-color: var(--color-contrast);
+    transition: background-color 0.3s ease;
+}
+
+#dl-pdf:hover {
+    background-color: var(--color-contrast-hover);
 }
