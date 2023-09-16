@@ -90,12 +90,12 @@
     text-decoration: none;
     color: var(--color-text-light);
     border-radius: 7px;
-    background-color: #b95e5e;
+    background-color: var(--color-contrast);
     transition: background-color 0.3s ease;
 }
 
 .dashboard-btn:hover {
-    background-color: #a95454;
+    background-color: var(--color-contrast-hover);
 }
 
 .active {
