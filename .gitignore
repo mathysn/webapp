@@ -4,3 +4,4 @@ package-lock.json
 package.json
 captchaKeys.json
 connection.js
+/views/static/libs/
