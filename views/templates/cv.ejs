@@ -3,12 +3,16 @@
     <head>
         <!-- SETUP -->
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.5">
 
         <!-- STYLE -->
         <link rel="stylesheet" href="/static/style/navbar.css">
         <link rel="stylesheet" href="/static/style/cv.css">
         <link rel="stylesheet" href="/static/style/root.css">
+
+        <!-- JAVASCRIPT -->
+        <script src="/static/libs/pdf.js"></script>
+        <script src="/static/libs/pdf.worker.js"></script>
 
         <!-- TITLE -->
         <title>CV - Mathys NOURRY</title>
@@ -47,12 +51,16 @@
         <div class="container">
             <div class="pdf-viewer">
                 <a id="dl-pdf" href="/static/assets/CV_Mathys_NOURRY.pdf" download target="_blank"><i id="pdf-icon" class="fa-regular fa-file-pdf"></i> Download PDF</a>
-                <iframe class="pdf" src="https://drive.google.com/file/d/1RfhB1_SG-SJqyYmcJvpZl106udeb4GZX/preview"></iframe>
+                <canvas id="pdf"></canvas>
+<!--                <iframe class="pdf" src="/static/assets/CV_Mathys_NOURRY.pdf#toolbar=0&navpanes=0"></iframe>-->
             </div>
+
         </div>
 
         <footer class="footer">
             <p>&copy; 2023 sij's test app. All rights reserved.</p>
         </footer>
+
+        <script src="/static/js/renderPdf.js"></script>
     </body>
 </html>

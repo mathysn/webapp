@@ -10,6 +10,7 @@ body {
 
 .container {
     margin: 0 auto;
+    /*width: 100vw;*/
     min-height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
@@ -22,16 +23,14 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: fit-content;
-    width: 100%;
+    width: 810px;
     margin-top: 85px;
     margin-bottom: 10px;
 }
 
-.pdf {
-    height: 1000px;
-    width: 45%;
-    border: none;
+#pdf {
+    overflow: hidden;
+    width: 100%;
 }
 
 #dl-pdf {
