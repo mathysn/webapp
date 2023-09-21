@@ -7,7 +7,7 @@
 
         <!-- STYLE -->
         <link rel="stylesheet" href="/static/style/navbar.css">
-        <link rel="stylesheet" href="/static/style/profile.css">
+        <link rel="stylesheet" href="/static/style/account.css">
         <link rel="stylesheet" href="/static/style/root.css">
 
         <!-- JAVASCRIPT -->
@@ -41,7 +41,7 @@
                     <% if(role === "Administrator" || role === "Moderator") { %>
                         <li class="nav-item"><a class="dashboard-btn" href="/dashboard">Dashboard</a></li>
                     <% } %>
-                    <li class="nav-item"><a id="logged-username" href="/profile">Logged in as <span class="animated"><%= username %></span></a></li>
+                    <li class="nav-item"><a id="logged-username" href="/account">Logged in as <span class="animated"><%= username %></span></a></li>
                     <li class="nav-item"><a class="animated" href="/logout">Logout</a></li>
                 <% } %>
             </ul>
@@ -51,16 +51,19 @@
             <div class="split-screen">
                 <div class="split-screen-left">
                     <h2 class="titles">My account</h2>
-                    <ul class="vertical-nav">
-                        <li class="vertical-nav-item"><button onclick="changeMenu()" value="1">Details</button></li>
-                        <li class="vertical-nav-item"><button onclick="changeMenu()" value="2">Security</button></li>
-                        <li class="vertical-nav-item"><button onclick="changeMenu()" value="4">Delete account</button></li>
+                    <ul class="vertical-nav-list">
+                        <li class="vertical-nav-item"><button onclick="changeMenu()" value="1"><i class="fa-solid fa-chevron-right"></i> Details</button></li>
+                        <li class="vertical-nav-item"><button onclick="changeMenu()" value="2"><i class="fa-solid fa-chevron-right"></i> Security</button></li>
+                    </ul>
+                    <ul class="vertical-nav-list-bottom">
+                        <li class="vertical-nav-item bottom"><a href="/account/delete"><i class="fa-solid fa-trash"></i> Delete account</a></li>
                     </ul>
                 </div>
+
+
                 <div class="split-screen-right">
                     <div class="category-account-details">
-                        <h2 class="titles">Account details</h2>
-
+                        <h2 class="titles">Details</h2>
                     </div>
                 </div>
             </div>

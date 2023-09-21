@@ -208,7 +208,7 @@ app.get('/logout', (req, res) => {
     res.redirect('/home');
 });
 
-app.get('/profile', async (req, res) => {
+app.get('/account', async (req, res) => {
     const loggedIn = req.session.loggedIn;
 
     // Check if the user is logged in (prevents people to access the page using the url)
@@ -235,7 +235,7 @@ app.get('/profile', async (req, res) => {
     const role = rows2[0].role_name;
 
 
-    res.render('profile', { loggedIn, email, username, hiddenPassword, role });
+    res.render('account', { loggedIn, email, username, hiddenPassword, role });
 });
 
 app.get('/dashboard', async (req, res) => {

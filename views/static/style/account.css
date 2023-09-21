@@ -20,8 +20,7 @@ body {
 
 .titles {
     width: fit-content;
-    margin: auto;
-    padding: 7px;
+    padding: 20px;
 }
 
 .split-screen {
@@ -35,6 +34,9 @@ body {
 }
 
 .split-screen-left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     width: 35%;
     margin: 25px 10px 35px 35px;
     background-color: white;
@@ -42,12 +44,54 @@ body {
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
-.vertical-nav {
+.vertical-nav-list {
     list-style: none;
+    margin: 15px;
+    flex: 2;
 }
 
 .vertical-nav-item {
+    margin: 5px 0;
+}
 
+.vertical-nav-item button {
+    text-align: start;
+    font-size: 16px;
+    padding: 5px 5px 5px 5px;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    /*background-color: #d1d1d1;*/
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.vertical-nav-item button:hover {
+    color: var(--color-contrast);
+}
+
+.vertical-nav-list-bottom {
+    list-style: none;
+    margin: 15px;
+}
+
+.vertical-nav-item a {
+    text-align: start;
+    font-size: 16px;
+    color: var(--color-contrast);
+    text-decoration: none;
+    padding: 5px 5px 5px 5px;
+    border: none;
+    border-radius: 3px;
+    width: 100%;
+    background-color: transparent;
+    cursor: pointer;
+    transition: color 0.25s ease;
+}
+
+.vertical-nav-item a:hover {
+    color: var(--color-contrast-hover);
 }
 
 .split-screen-right {
