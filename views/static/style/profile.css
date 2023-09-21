@@ -18,20 +18,64 @@ body {
     background: var(--color-background);
 }
 
-.profile-container {
-    width: 400px;
-    margin: 250px auto;
-    padding: 20px;
+.titles {
+    width: fit-content;
+    margin: auto;
+    padding: 7px;
+}
+
+.split-screen {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100%;
+    margin-top: 85px;
+    color: var(--color-text-dark);
+}
+
+.split-screen-left {
+    width: 35%;
+    margin: 25px 10px 35px 35px;
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.info-list {
+.vertical-nav {
     list-style: none;
 }
+
+.vertical-nav-item {
+
+}
+
+.split-screen-right {
+    width: 65%;
+    margin: 25px 35px 35px 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+
+/*.profile-container {*/
+/*    width: 400px;*/
+/*    margin: 250px auto;*/
+/*    padding: 20px;*/
+/*    background-color: white;*/
+/*    border-radius: 5px;*/
+/*    box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);*/
+/*}*/
+
+/*h2 {*/
+/*    text-align: center;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.info-list {*/
+/*    list-style: none;*/
+/*}*/
