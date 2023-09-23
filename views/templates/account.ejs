@@ -52,8 +52,8 @@
                 <div class="split-screen-left">
                     <h2 class="titles">My account</h2>
                     <ul class="vertical-nav-list">
-                        <li class="vertical-nav-item"><button onclick="changeMenu()" value="1"><i class="fa-solid fa-chevron-right"></i> Details</button></li>
-                        <li class="vertical-nav-item"><button onclick="changeMenu()" value="2"><i class="fa-solid fa-chevron-right"></i> Security</button></li>
+                        <li class="vertical-nav-item"><button id="account-details"><i class="fa-solid fa-chevron-right"></i> Details</button></li>
+                        <li class="vertical-nav-item"><button id="account-security"><i class="fa-solid fa-chevron-right"></i> Security</button></li>
                     </ul>
                     <ul class="vertical-nav-list-bottom">
                         <li class="vertical-nav-item bottom"><a href="/account/delete"><i class="fa-solid fa-trash"></i> Delete account</a></li>
@@ -62,22 +62,16 @@
 
 
                 <div class="split-screen-right">
-                    <div class="category-account-details">
+                    <div id="category-account-details">
                         <h2 class="titles">Details</h2>
+                        <!-- variables to use for the profile: username, email, hidden password, role, creation date, first name, last name, phone number, etc... -->
+                        <!-- TODO: split screen with on the left basic labels (e.g. Personal Info, Email Adress, etc...) and on the right the info with buttons to edit the profile -->
+                    </div>
+                    <div id="category-account-security">
+                        <h2 class="titles">Security</h2>
                     </div>
                 </div>
             </div>
-
-
-<!--            <div class="profile-container">-->
-<!--                <h2>Profile</h2>-->
-<!--                <ul class="info-list">-->
-<!--                    <li class="info-item"><p>Username: <span><%= username %></span></p></li>-->
-<!--                    <li class="info-item"><p>Email: <span><%= email %></span></p></li>-->
-<!--                    <li class="info-item"><p>Password: <span><%= hiddenPassword %></span></p></li>-->
-<!--                    <li class="info-item"><p>Role: <span><%= role %></span></p></li>-->
-<!--                </ul>-->
-<!--            </div>-->
         </div>
 
         <footer class="footer">

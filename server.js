@@ -5,13 +5,12 @@ const mysql2 = require('mysql2');
 const path = require('path');
 const bcrypt = require('bcrypt')
 const crypto = require('crypto');
+const chalk = require('chalk');
 
 const session = require('express-session');
 const connection = require('./connection.js');
 
 const captchaKey = require('./captchaKeys.json');
-// const {randomInit} = require("mysql/lib/protocol/Auth");
-// const { hash } = require("bcrypt");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -30,13 +29,13 @@ app.set('views', path.join(__dirname, 'views/templates'));
 app.set('view engine', 'ejs');
 
 app.listen(port, () => {
-    console.log(`[SERVER] Server is listening on port ${port}: http://localhost:${port}/`);
+    console.log(chalk.yellow(`\n[SERVER] Server is listening on port ${port}: http://localhost:${port}/`));
 
 });
 
 connection.connect((err) => {
     if (err) throw err;
-    console.log('[DATABASE] Connected to the database');
+    console.log(chalk.blue('[DATABASE] Connected to the database\n'));
 
 });
 
