@@ -103,8 +103,28 @@ body {
 
 #category-account-details {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--color-text-dark);
 }
 
 #category-account-security {
     display: none;
 }
+
+/* TODO: finish the CSS for the details category */
+
+/*.category-split-screen {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: space-between;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    margin-top: 85px;*/
+/*    color: var(--color-text-dark);*/
+/*}*/
+
+/*.category-split-screen-left {*/
+/*    flex: 1;*/
+/*    width: 35%;*/
+/*}*/
