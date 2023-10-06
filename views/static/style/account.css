@@ -60,7 +60,7 @@ body {
     padding: 5px 5px 5px 5px;
     border: none;
     border-radius: 3px;
-    width: 100%;
+    width: fit-content;
     background-color: transparent;
     cursor: pointer;
     transition: color 0.25s ease;
@@ -104,15 +104,47 @@ body {
 #category-account-details {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     color: var(--color-text-dark);
+    height: 100%;
 }
 
 #category-account-security {
     display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--color-text-dark);
+}
+
+.category-split-screen {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 100%;
 }
 
 /* TODO: finish the CSS for the details category */
+
+.category-split-screen-left {
+    background-color: lime;
+    width: 30%;
+}
+
+.vertical-list {
+    flex: 2;
+    margin: 15px;
+    list-style: none;
+}
+
+.vertical-list-item {
+    width: fit-content;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.category-split-screen-right {
+    background-color: red;
+    width: 70%;
+}
 
 /*.category-split-screen {*/
 /*    display: flex;*/
