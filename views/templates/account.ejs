@@ -76,9 +76,9 @@
                             <div class="category-split-screen-left">
                                 <ul class="vertical-list">
                                     <li class="vertical-list-item"><i class="fa-solid fa-image"></i> Profile picture</li>
-                                    <li class="vertical-list-item">Personal information</li>
-                                    <li class="vertical-list-item">Role</li>
-                                    <li class="vertical-list-item">Email address</li>
+                                    <li class="vertical-list-item"><i class="fa-solid fa-user"></i> Personal information</li>
+                                    <li class="vertical-list-item"><i class="fa-solid fa-gear"></i> Role</li>
+                                    <li class="vertical-list-item"><i class="fa-solid fa-envelope"></i> Email address</li>
                                 </ul>
                             </div>
                             <div class="category-split-screen-right">
@@ -86,7 +86,10 @@
                                     <li class="account-info-item">
                                         <div class="account-profile-picture">
                                             <img id="profile-picture" src="/static/assets/profile_pictures/testimage.png" alt="profile picture">
-                                            <a href="" id="edit-pfp">Change image</a>
+                                            <form action="/change-pfp" method="post" enctype="multipart/form-data">
+                                                <input type="file" name="new-pfp">
+                                                <button id="edit-pfp" type="submit">Change image</button>
+                                            </form>
                                         </div>
                                     </li>
                                 </ul>
