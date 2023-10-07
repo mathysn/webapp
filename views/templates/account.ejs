@@ -72,32 +72,49 @@
                         <h2 class="titles">Details</h2>
                         <!-- variables to use for the profile: username, email, hidden password, role, creation date, first name, last name, phone number, etc... -->
                         <!-- TODO: split screen with on the left basic labels (e.g. Personal Info, Email Adress, etc...) and on the right the info with buttons to edit the profile -->
-                        <div class="category-split-screen">
-                            <div class="category-split-screen-left">
-                                <ul class="vertical-list">
-                                    <li class="vertical-list-item"><i class="fa-solid fa-image"></i> Profile picture</li>
-                                    <li class="vertical-list-item"><i class="fa-solid fa-user"></i> Personal information</li>
-                                    <li class="vertical-list-item"><i class="fa-solid fa-gear"></i> Role</li>
-                                    <li class="vertical-list-item"><i class="fa-solid fa-envelope"></i> Email address</li>
-                                </ul>
-                            </div>
-                            <div class="category-split-screen-right">
-                                <ul class="account-info-list">
-                                    <li class="account-info-item">
-                                        <div class="account-profile-picture">
-                                            <img id="profile-picture" src="/static/assets/profile_pictures/testimage.png" alt="profile picture">
-                                            <form action="/change-pfp" method="post" enctype="multipart/form-data">
-                                                <input type="file" name="new-pfp">
-                                                <button id="edit-pfp" type="submit">Change image</button>
-                                            </form>
-                                        </div>
-                                    </li>
-                                </ul>
+                        <div class="category-screen">
+                            <ul class="vertical-list">
+                                <li class="vertical-list-item">
+                                    <div class="vertical-list-item-left"><i class="fa-solid fa-image"></i> Profile picture</div>
+                                    <div class="vertical-list-item-right">
+                                        <img id="profile-picture" src="/static/assets/profile_pictures/testimage.png" alt="profile picture">
+                                        <form id="edit-pfp-controls" action="/change-pfp" method="post" enctype="multipart/form-data">
+                                            <input id="edit-pfp-choose-file" type="file" name="new-pfp">
+                                            <label for="edit-pfp-choose-file"><i class="fa-solid fa-cloud-arrow-up"></i> Choose a file</label>
+                                            <button id="edit-pfp" type="submit"><i class="fa-solid fa-check"></i></button>
+                                        </form>
+                                    </div>
+                                </li>
+                                <li class="vertical-list-item account-personal-info">
+                                    <div class="vertical-list-item-left"><i class="fa-solid fa-user"></i> Personal information</div>
+                                    <div class="vertical-list-item-right"></div>
+                                </li>
+                                <li class="vertical-list-item account-role">
+                                    <div class="vertical-list-item-left"><i class="fa-solid fa-gear"></i> Role</div>
+                                    <div class="vertical-list-item-right"></div>
+                                </li>
+                                <li class="vertical-list-item account-email-address">
+                                    <div class="vertical-list-item-left"><i class="fa-solid fa-envelope"></i> Email address</div>
+                                    <div class="vertical-list-item-right"></div>
+                                </li>
+                            </ul>
+<!--                            <div class="category-split-screen-right">-->
+<!--                                <ul class="account-info-list">-->
+<!--                                    <li class="account-info-item">-->
+<!--                                        <div class="account-profile-picture">-->
+<!--                                            <img id="profile-picture" src="/static/assets/profile_pictures/testimage.png" alt="profile picture">-->
+<!--                                            <form action="/change-pfp" method="post" enctype="multipart/form-data">-->
+<!--                                                <input type="file" name="new-pfp">-->
+<!--                                                <button id="edit-pfp" type="submit">Change image</button>-->
+<!--                                            </form>-->
+<!--                                        </div>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
 
-                                <div class="account-personal-info"></div>
-                                <div class="account-role"></div>
-                                <div class="account-email-address"></div>
-                            </div>
+<!--                                <div class="account-personal-info"></div>-->
+<!--                                <div class="account-role"></div>-->
+<!--                                <div class="account-email-address"></div>-->
+<!--                            </div>-->
                         </div>
                     </div>
                     <div id="category-account-security">
