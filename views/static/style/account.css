@@ -6,11 +6,12 @@
 
 body {
     font-family: Montserrat, sans-serif;
+    overflow-x: hidden;
 }
 
 .container {
     margin: 0 auto;
-    height: calc(100vh - 50px);
+    /*height: calc(100vh - 50px);*/
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,7 +29,9 @@ body {
     flex-direction: row;
     justify-content: space-between;
     width: 100vw;
-    height: 100%;
+    max-height: 100vh;
+    /*margin-top: 170px;*/
+    /*margin-bottom: 85px;*/
     margin-top: 85px;
     color: var(--color-text-dark);
 }
@@ -38,6 +41,7 @@ body {
     flex-direction: column;
     flex: 1;
     width: 35%;
+    height: fit-content;
     margin: 25px 10px 35px 35px;
     background-color: white;
     border-radius: 5px;
@@ -98,6 +102,12 @@ body {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+    overflow-y: scroll;
+}
+
+.split-screen-right::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
 }
 
 #category-account-details {
@@ -113,6 +123,8 @@ body {
     flex-direction: column;
     justify-content: space-between;
     color: var(--color-text-dark);
+    height: 100%;
+    width: 100%;
 }
 
 .category-screen {
@@ -124,9 +136,15 @@ body {
     margin-bottom: 15px;
 }
 
+.update-account-form {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 15px 0 15px;
+    width: 100%;
+}
+
 .vertical-list {
     flex: 2;
-    margin: 15px;
     list-style: none;
 }
 
@@ -182,11 +200,10 @@ body {
 #edit-pfp-choose-file + label {
     font-size: 16px;
     padding: 10px;
-    border-top-left-radius: 7px;
-    border-bottom-left-radius: 7px;
+    border-radius: 7px;
     font-weight: 700;
     color: var(--color-contrast);
-    border: solid 3px var(--color-contrast);
+    border: solid 2px var(--color-contrast);
     background-color: transparent;
     display: inline-block;
     transition: background-color 0.3s ease;
@@ -196,7 +213,6 @@ body {
 #edit-pfp-choose-file + label:hover {
     color: var(--color-text-light);
     background-color: var(--color-contrast);
-    
 }
 
 #edit-pfp-choose-file + label {
@@ -204,10 +220,8 @@ body {
 }
 
 #edit-pfp {
-    width: fit-content;
-    height: 44px;
     padding: 10px;
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
     color: var(--color-text-light);
     cursor: pointer;
@@ -224,4 +238,44 @@ body {
 }
 
 
+#edit-personal-info-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+}
 
+.personal-info-label {
+    margin-bottom: 5px;
+
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="tel"]{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#update-account-submit {
+    padding: 10px 20px;
+    font-size: 16px;
+    width: fit-content;
+    background-color: var(--color-btn-submit);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#update-account-submit:hover {
+    background-color: var(--color-btn-submit-hover);
+}
