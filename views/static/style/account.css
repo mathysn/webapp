@@ -29,7 +29,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     width: 100vw;
-    max-height: 100vh;
+    /*max-height: 100vh;*/
     /*margin-top: 170px;*/
     /*margin-bottom: 85px;*/
     margin-top: 85px;
@@ -102,7 +102,7 @@ body {
     background-color: white;
     border-radius: 5px;
     box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-    overflow-y: scroll;
+    /*overflow-y: scroll;*/
 }
 
 .split-screen-right::-webkit-scrollbar {
@@ -131,7 +131,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 100%;
+    /*height: 100%;*/
     width: 100%;
     margin-bottom: 15px;
 }
@@ -219,25 +219,6 @@ body {
     cursor: pointer;
 }
 
-#edit-pfp {
-    padding: 10px;
-    font-size: 16px;
-    text-decoration: none;
-    color: var(--color-text-light);
-    cursor: pointer;
-    border: solid 3px var(--color-btn-submit);
-    border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
-    background-color: var(--color-btn-submit);
-    transition: all 0.3s ease;
-}
-
-#edit-pfp:hover {
-    background-color: var(--color-btn-submit-hover);
-    border: solid 3px var(--color-btn-submit-hover);
-}
-
-
 #edit-personal-info-controls {
     display: flex;
     flex-direction: column;
@@ -245,8 +226,8 @@ body {
     width: 100%;
 }
 
-.personal-info-label {
-    margin-bottom: 5px;
+.account-info-label {
+    margin-bottom: 3px;
 
     user-select: none;
     -webkit-touch-callout: none;

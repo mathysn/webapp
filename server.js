@@ -222,6 +222,9 @@ app.get('/account', async (req, res) => {
 
     const user = rows[0];
     const username = user.username;
+    const firstname = user.firstname;
+    const lastname = user.lastname;
+    const phonenumber = user.phonenumber;
 
     let hiddenPassword = "";
     const stringLength = Math.floor(Math.random() * (13 - 8 + 1)) + 8;
@@ -234,7 +237,7 @@ app.get('/account', async (req, res) => {
     const role = rows2[0].role_name;
 
 
-    res.render('account', { loggedIn, email, username, hiddenPassword, role });
+    res.render('account', { loggedIn, email, username, firstname, lastname, phonenumber, hiddenPassword, role });
 });
 
 app.get('/dashboard', async (req, res) => {

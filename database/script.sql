@@ -7,6 +7,9 @@ CREATE TABLE roles(
 CREATE TABLE users(
     id_user INT AUTO_INCREMENT,
     username VARCHAR(255) NOT NULL,
+    firstname VARCHAR(255),
+    lastname VARCHAR(255),
+    phonenumber VARCHAR(255),
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     role_id INT DEFAULT 1,

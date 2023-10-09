@@ -12,6 +12,7 @@
 
         <!-- JAVASCRIPT -->
         <script src="/static/js/accountInfo.js"></script>
+        <script src="/static/js/interactivePfpLabel.js"></script>
 
         <!-- TITLE -->
         <title>Profile - Mathys NOURRY</title>
@@ -80,22 +81,38 @@
                                             <img id="profile-picture" src="/static/assets/profile_pictures/testimage.png" alt="profile picture">
                                             <div id="edit-pfp-controls">
                                                 <input id="edit-pfp-choose-file" type="file" name="new-pfp">
-                                                <label for="edit-pfp-choose-file"><i class="fa-solid fa-cloud-arrow-up"></i> Choose a file</label>
+                                                <label id="edit-pfp-choose-file-label" for="edit-pfp-choose-file"><i class="fa-solid fa-cloud-arrow-up"></i> Choose a file</label>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="vertical-list-item account-personal-info">
                                         <div class="vertical-list-item-left"><i class="fa-solid fa-user"></i> Personal information</div>
                                         <div class="vertical-list-item-right">
-                                            <div id="edit-personal-info-controls"> <!--action="/edit-personal-info"-->
+                                            <div id="edit-personal-info-controls">
                                                 <label class="account-info-label" for="username">Username</label>
                                                 <input id="username" name="username" type="text" value="<%= username %>">
+
                                                 <label class="account-info-label" for="firstname">First name</label>
-                                                <input id="firstname" name="firstname" type="text" value=""> <!-- value = < %= firstname %> when it gets added -->
+                                                <% if(firstname !== null) { %>
+                                                    <input id="lastname" name="lastname" type="text" value="<%= firstname %>">
+                                                <% } else { %>
+                                                    <input id="lastname" name="lastname" type="text" value="">
+                                                <% } %>
+
                                                 <label class="account-info-label" for="lastname">Last name</label>
-                                                <input id="lastname" name="lastname" type="text" value=""> <!-- value = < %= lastname %> when it gets added -->
+                                                <% if(lastname !== null) { %>
+                                                    <input id="lastname" name="lastname" type="text" value="<%= lastname %>">
+                                                <% } else { %>
+                                                    <input id="lastname" name="lastname" type="text" value="">
+                                                <% } %>
+
                                                 <label class="paccount-info-label" for="phonenumber">Phone number</label>
-                                                <input id="phonenumber" name="phonenumber" type="tel" value=""> <!-- value = < %= phonenumber %> when it gets added -->
+                                                <% if(phonenumber !== null) { %>
+                                                    <input id="phonenumber" name="phonenumber" type="tel" value="<%= phonenumber.split('').reduce((a, e, i)=> a + e + (i % 2 === 1 ? ' ' : ''), '').trim(); %>">
+                                                <% } else { %>
+                                                    <input id="phonenumber" name="phonenumber" type="tel" value="">
+                                                <% } %>
+
                                             </div>
                                         </div>
                                     </li>
