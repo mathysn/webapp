@@ -108,7 +108,7 @@
 
                                                 <label class="paccount-info-label" for="phonenumber">Phone number</label>
                                                 <% if(phonenumber !== null) { %>
-                                                    <input id="phonenumber" name="phonenumber" type="tel" value="<%= phonenumber.split('').reduce((a, e, i)=> a + e + (i % 2 === 1 ? ' ' : ''), '').trim(); %>">
+                                                    <input id="phonenumber" name="phonenumber" type="tel" pattern="[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}[0-9]{2}" value="<%= phonenumber.split('').reduce((a, e, i)=> a + e + (i % 2 === 1 ? ' ' : ''), '').trim(); %>">
                                                 <% } else { %>
                                                     <input id="phonenumber" name="phonenumber" type="tel" value="">
                                                 <% } %>
