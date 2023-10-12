@@ -9,9 +9,29 @@ body {
     overflow-x: hidden;
 }
 
+/*::-webkit-scrollbar {*/
+/*    width: 8px;*/
+/*    background-color: rgba(0,0,0,0);*/
+/*    -webkit-border-radius: 100px;*/
+/*}*/
+
+/*::-webkit-scrollbar:hover {*/
+/*    background-color: rgba(0, 0, 0, 0.09);*/
+/*}*/
+
+/*::-webkit-scrollbar-thumb:vertical {*/
+/*    background: rgba(0,0,0,0.5);*/
+/*    -webkit-border-radius: 100px;*/
+/*}*/
+/*::-webkit-scrollbar-thumb:vertical:active {*/
+/*    background: rgba(0,0,0,0.61);*/
+/*    -webkit-border-radius: 100px;*/
+/*}*/
+
 .container {
     margin: 0 auto;
-    height: calc(100vh - 50px);
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,6 +51,7 @@ body {
     width: 100vw;
     min-height: auto;
     height: 100%;
+    max-height: 100%;
     margin-top: 85px;
     color: var(--color-text-dark);
 }
