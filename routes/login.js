@@ -6,7 +6,8 @@ module.exports = function(app) {
     app.get('/login', (req, res) => {
         const email = null;
         const errMsg = null;
-        res.render('login', { email, errMsg });
+        const loggedIn = false;
+        res.render('login', { email, errMsg, loggedIn });
 
     });
 

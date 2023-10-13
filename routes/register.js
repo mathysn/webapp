@@ -9,7 +9,8 @@ module.exports = function(app) {
         const email = null;
         const username = null;
         const errMsg = null;
-        res.render('register', { email, username, errMsg });
+        const loggedIn = false;
+        res.render('register', { email, username, errMsg, loggedIn });
 
     });
 
