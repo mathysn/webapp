@@ -40,23 +40,23 @@ module.exports = function(app) {
         }
 
         // Check if the password doesn't meet the requirements (1 cap letter, 1 number, 1 spec character)
-        // if(!/[A-Z]/.test(password) || !/[0-9]/.test(password) || !/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) || password.length < 8) {
-        //     errMsg = "The password you entered is missing the following: <ul class='error-message-list'>"
-        //     if(password.length < 8) {
-        //         errMsg += "<li>8 characters or more</li>";
-        //     }
-        //     if(!/[A-Z]/.test(password)) {
-        //         errMsg += "<li>1 capital letter</li>";
-        //     }
-        //     if(!/[0-9]/.test(password)) {
-        //         errMsg += "<li>1 number</li>";
-        //     }
-        //     if(!/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)) {
-        //         errMsg += "<li>1 special character</li>";
-        //     }
-        //     errMsg += "</ul>";
-        //     return res.render('register', { email, username, errMsg });
-        // }
+        if(!/[A-Z]/.test(password) || !/[0-9]/.test(password) || !/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password) || password.length < 8) {
+            errMsg = "The password you entered is missing the following: <ul class='error-message-list'>"
+            if(password.length < 8) {
+                errMsg += "<li>8 characters or more</li>";
+            }
+            if(!/[A-Z]/.test(password)) {
+                errMsg += "<li>1 capital letter</li>";
+            }
+            if(!/[0-9]/.test(password)) {
+                errMsg += "<li>1 number</li>";
+            }
+            if(!/[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/.test(password)) {
+                errMsg += "<li>1 special character</li>";
+            }
+            errMsg += "</ul>";
+            return res.render('register', { email, username, errMsg });
+        }
 
         try {
             const response = await axios.post('https://www.google.com/recaptcha/api/siteverify', null, {

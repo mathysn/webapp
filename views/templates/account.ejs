@@ -51,19 +51,19 @@
                 <div class="split-screen-right">
                     <div id="category-account-details">
                         <h2 class="titles">Details</h2>
-<!--                        <div class="error-message">-->
-<!--                            Error: you need to blablabla <br>-->
-<!--                        </div>-->
 
                         <div class="category-screen">
                             <form class="update-account-form" action="/update-account" method="post" enctype="multipart/form-data">
                                 <ul class="vertical-list">
+                                    <li id="error-message-container" class="vertical-list-item">
+                                        <p id="error-message"></p>
+                                    </li>
                                     <li class="vertical-list-item">
                                         <div class="vertical-list-item-left"><i class="fa-solid fa-image"></i> Profile picture</div>
                                         <div class="vertical-list-item-right">
                                             <img id="profile-picture" src="/static/assets/profile_pictures/testimage.png" alt="profile picture">
                                             <div id="edit-pfp-controls">
-                                                <input id="edit-pfp-choose-file" type="file" name="new-pfp">
+                                                <input id="edit-pfp-choose-file" type="file" name="new-pfp" accept=".jpg, .png, .jpeg, .gif">
                                                 <label id="edit-pfp-choose-file-label" for="edit-pfp-choose-file"><i class="fa-solid fa-cloud-arrow-up"></i> Choose a file</label>
                                             </div>
                                         </div>
