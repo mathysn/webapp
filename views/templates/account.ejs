@@ -32,27 +32,7 @@
 
     </head>
     <body>
-        <nav class="navbar">
-            <ul class="nav-list nav-list-left">
-                <li class="nav-item"><a class="animated" href="/home">Home</a></li>
-                <li class="nav-item"><a class="animated" href="/about">About</a></li>
-                <li class="nav-item"><a class="animated" href="/cv">CV</a></li>
-                <li class="nav-item"><a class="animated" href="/portfolio">Portfolio</a></li>
-                <li class="nav-item"><a class="animated-icon" href="https://github.com/mathysn" target="_blank"><i class="fa-brands fa-github"></i></a></li>
-            </ul>
-            <ul class="nav-list nav-list-right">
-                <% if(!loggedIn) { %>
-                    <li class="nav-item"><a class="animated" href="/login">Login</a></li>
-                    <li class="nav-item"><a class="animated" href="/register">Register</a></li>
-                <% } else { %>
-                    <% if(role === "Administrator" || role === "Moderator") { %>
-                        <li class="nav-item"><a class="dashboard-btn" href="/dashboard">Dashboard</a></li>
-                    <% } %>
-                    <li class="nav-item"><a id="logged-username" href="/account">Logged in as <span class="animated"><%= username %></span></a></li>
-                    <li class="nav-item"><a class="animated" href="/logout">Logout</a></li>
-                <% } %>
-            </ul>
-        </nav>
+        <%- include('./navbar.ejs') %>
 
         <div class="container">
             <div class="split-screen">
@@ -71,20 +51,20 @@
                 <div class="split-screen-right">
                     <div id="category-account-details">
                         <h2 class="titles">Details</h2>
-<!--                        <div class="error-message">-->
-<!--                            Error: you need to blablabla <br>-->
-<!--                        </div>-->
 
                         <div class="category-screen">
                             <form class="update-account-form" action="/update-account" method="post" enctype="multipart/form-data">
                                 <ul class="vertical-list">
+                                    <li id="error-message-container" class="vertical-list-item">
+                                        <p id="error-message"></p>
+                                    </li>
                                     <li class="vertical-list-item">
                                         <div class="vertical-list-item-left"><i class="fa-solid fa-image"></i> Profile picture</div>
                                         <div class="vertical-list-item-right">
                                             <img id="profile-picture" src="/static/assets/profile_pictures/testimage.png" alt="profile picture">
                                             <div id="edit-pfp-controls">
-                                                <input id="edit-pfp-choose-file" type="file" name="new-pfp">
-                                                <label id="edit-pfp-choose-file-label" for="edit-pfp-choose-file"><i class="fa-solid fa-cloud-arrow-up"></i> <span id="edit-pfp-filename">Choose a file</span></label>
+                                                <input id="edit-pfp-choose-file" type="file" name="new-pfp" accept=".jpg, .png, .jpeg, .gif">
+                                                <label id="edit-pfp-choose-file-label" for="edit-pfp-choose-file"><i class="fa-solid fa-cloud-arrow-up"></i> Choose a file</label>
                                             </div>
                                         </div>
                                     </li>
