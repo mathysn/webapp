@@ -1,3 +1,6 @@
+# DISCLAIMER
+This project was discontinued after I started learning back-end development more in depth. It will not be updated any time soon.
+
 # Welcome to my project
 This project has the goal of teaching me how back-end development works, and it will also become my personal website.
 
@@ -7,6 +10,3 @@ This project has the goal of teaching me how back-end development works, and it 
 - EJS (as a replacement for HTML)
 - CSS
 - Native JS
-
-## Content
-Since this will eventually be my personal website, it will contain stuff like my CV, portfolio and other random things that I will create in the future, maybe even a blog or forums, who knows...
